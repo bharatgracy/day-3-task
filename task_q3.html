@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+var request=new XMLHttpRequest()
+        console.log(request)// object
+        //open the connection
+        //url
+        //method
+        request.open("GET","https://restcountries.com/v3.1/all")
+        // new keyword object
+
+        //sending a connection
+        request.send()
+        console.log(request)
+        //JSON string => server response
+        // request.response
+
+        // 
+
+        //response => page is loaded that tym it should connect to server and give the data
+
+        // annymous function
+     
+        request.onload=function(){
+            // console.log(request.response)
+            var data=JSON.parse(request.response)
+            console.log(data)
+            // 250 contries into it 
+            console.log(data[0].name)
+
+            for(var i=0;i<data.length;i++){
+                console.log(data[i].name)
+            }
+            for(var i=0;i<data.length;i++){
+                console.log(data[i].region)
+            }
+            for(var i=0;i<data.length;i++){
+                console.log(data[i].subregion)
+            }
+            for(var i=0;i<data.length;i++){
+                console.log(data[i].population)
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function compareJSON(json1, json2) {
+    // Check if both objects have the same keys
+    const keys1 = Object.keys(json1);
+    const keys2 = Object.keys(json2);
+
+    // Check if the number of keys is the same
+    if (keys1.length !== keys2.length) {
+        return false;
+    }
+
+    // Check if all keys in json1 are present in json2 and have the same values
+    for (let key of keys1) {
+        if (!(key in json2) || json1[key] !== json2[key]) {
+            return false;
+        }
+    }
+
+    // Check if all keys in json2 are present in json1
+    for (let key of keys2) {
+        if (!(key in json1)) {
+            return false;
+        }
+    }
+
+    // If all checks pass, the objects are equal
+    return true;
+}
+
+// Example usage
+const obj1 = { name: "person1", age: 5 };
+const obj2 = { age: 5, name: "person1" };
+
+console.log(compareJSON(obj1, obj2));
+    </script>
+</body>
+</html>
